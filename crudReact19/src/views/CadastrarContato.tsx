@@ -56,21 +56,20 @@ const CadastrarContato: React.FC = () => {
   };
 
   return (
-    <div style={containerStyle}>
+    <div className="form-container">
       <h2>Cadastrar Novo Contato</h2>
-      <form onSubmit={handleSubmit(onSubmit)} style={formStyle}>
-        <div style={inputGroupStyle}>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="input-group">
           <label htmlFor="name">Nome:</label>
           <input
             {...register('name')}
             id="name"
-            style={inputStyle}
             placeholder="Digite o nome"
           />
-          {errors.name && <span style={errorTextStyle}>{errors.name.message}</span>}
+          {errors.name && <span className="error-text">{errors.name.message}</span>}
         </div>
 
-        <div style={inputGroupStyle}>
+        <div className="input-group">
           <label htmlFor="phone">Telefone:</label>
           {/* Componente para máscara de entrada de telefone */}
           <Controller
@@ -84,87 +83,31 @@ const CadastrarContato: React.FC = () => {
                   '0': /[0-9]/,
                 }}
                 id="phone"
-                style={inputStyle}
                 placeholder="(99)99999-9999"
                 onAccept={(value) => field.onChange(value)}
               />
             )}
           />
-          {errors.phone && <span style={errorTextStyle}>{errors.phone.message}</span>}
+          {errors.phone && <span className="error-text">{errors.phone.message}</span>}
         </div>
 
-        <div style={inputGroupStyle}>
+        <div className="input-group">
           <label htmlFor="email">E-mail:</label>
           <input
             {...register('email')}
             id="email"
-            style={inputStyle}
             placeholder="exemplo@email.com"
           />
-          {errors.email && <span style={errorTextStyle}>{errors.email.message}</span>}
+          {errors.email && <span className="error-text">{errors.email.message}</span>}
         </div>
 
-        <div style={buttonContainerStyle}>
-          <button type="submit" style={submitButtonStyle}>Cadastrar</button>
-          <button type="button" onClick={handleCancel} style={cancelButtonStyle}>Cancelar</button>
+        <div className="button-container">
+          <button type="submit" className="btn-submit">Cadastrar</button>
+          <button type="button" onClick={handleCancel} className="btn-cancel">Cancelar</button>
         </div>
       </form>
     </div>
   );
-};
-
-// Estilos básicos inline para o formulário
-const containerStyle: React.CSSProperties = {
-  maxWidth: '500px',
-  margin: '0 auto',
-};
-
-const formStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '15px',
-  color: '#333',
-};
-
-const inputGroupStyle: React.CSSProperties = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '5px',
-};
-
-const inputStyle: React.CSSProperties = {
-  padding: '8px',
-  borderRadius: '4px',
-  border: '1px solid #ccc',
-};
-
-const errorTextStyle: React.CSSProperties = {
-  color: 'red',
-  fontSize: '12px',
-};
-
-const buttonContainerStyle: React.CSSProperties = {
-  display: 'flex',
-  gap: '10px',
-  marginTop: '10px',
-};
-
-const submitButtonStyle: React.CSSProperties = {
-  padding: '10px 20px',
-  backgroundColor: '#007bff',
-  color: 'white',
-  border: 'none',
-  borderRadius: '4px',
-  cursor: 'pointer',
-};
-
-const cancelButtonStyle: React.CSSProperties = {
-  padding: '10px 20px',
-  backgroundColor: '#6c757d',
-  color: 'white',
-  border: 'none',
-  borderRadius: '4px',
-  cursor: 'pointer',
 };
 
 export default CadastrarContato;

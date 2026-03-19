@@ -1,6 +1,10 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createRoute } from '@tanstack/react-router'
+import { Route as rootRoute } from './__root'
 import EditarContato from '../views/EditarContato'
 
-export const Route = createFileRoute('/editar/$id')({
+// Rota para '/editar/:id' - usando createRoute para definição manual
+export const Route = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/editar/$id',
   component: EditarContato,
 })

@@ -40,42 +40,42 @@ const Listagem: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="table-container">
       <h2>Listagem de Contatos</h2>
       <button
         onClick={() => navigate({ to: '/cadastrar' })}
-        style={addButtonStyle}
+        className="btn-add"
       >
         Cadastrar Novo Contato
       </button>
 
-      <table style={tableStyle}>
+      <table>
         <thead>
-          <tr style={headerRowStyle}>
-            <th style={cellStyle}>ID</th>
-            <th style={cellStyle}>Nome</th>
-            <th style={cellStyle}>Telefone</th>
-            <th style={cellStyle}>E-mail</th>
-            <th style={cellStyle}>Ações</th>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
           {contacts.map((contact) => (
-            <tr key={contact.id} style={rowStyle}>
-              <td style={cellStyle}>{contact.id}</td>
-              <td style={cellStyle}>{contact.name}</td>
-              <td style={cellStyle}>{contact.phone}</td>
-              <td style={cellStyle}>{contact.email}</td>
-              <td style={cellStyle}>
+            <tr key={contact.id}>
+              <td>{contact.id}</td>
+              <td>{contact.name}</td>
+              <td>{contact.phone}</td>
+              <td>{contact.email}</td>
+              <td>
                 <button
                   onClick={() => handleEditClick(contact.id)}
-                  style={editButtonStyle}
+                  className="btn-edit"
                 >
                   Editar
                 </button>
                 <button
                   onClick={() => handleDeleteClick(contact.id)}
-                  style={deleteButtonStyle}
+                  className="btn-delete"
                 >
                   Excluir
                 </button>
@@ -84,7 +84,7 @@ const Listagem: React.FC = () => {
           ))}
           {contacts.length === 0 && (
             <tr>
-              <td colSpan={5} style={{ textAlign: 'center', padding: '10px' }}>
+              <td colSpan={5} style={{ textAlign: 'center' }}>
                 Nenhum contato encontrado.
               </td>
             </tr>
@@ -102,57 +102,6 @@ const Listagem: React.FC = () => {
       />
     </div>
   );
-};
-
-// Estilos básicos inline para a tabela e botões
-const tableStyle: React.CSSProperties = {
-  width: '100%',
-  borderCollapse: 'collapse',
-  marginTop: '20px',
-  color: '#333',
-};
-
-const headerRowStyle: React.CSSProperties = {
-  backgroundColor: '#f4f4f4',
-  borderBottom: '2px solid #ddd',
-};
-
-const rowStyle: React.CSSProperties = {
-  borderBottom: '1px solid #ddd',
-};
-
-const cellStyle: React.CSSProperties = {
-  padding: '12px',
-  textAlign: 'left',
-};
-
-const addButtonStyle: React.CSSProperties = {
-  padding: '10px 20px',
-  backgroundColor: '#28a745',
-  color: 'white',
-  border: 'none',
-  borderRadius: '4px',
-  cursor: 'pointer',
-  marginBottom: '20px',
-};
-
-const editButtonStyle: React.CSSProperties = {
-  padding: '6px 12px',
-  backgroundColor: '#ffc107',
-  color: 'black',
-  border: 'none',
-  borderRadius: '4px',
-  cursor: 'pointer',
-  marginRight: '8px',
-};
-
-const deleteButtonStyle: React.CSSProperties = {
-  padding: '6px 12px',
-  backgroundColor: '#dc3545',
-  color: 'white',
-  border: 'none',
-  borderRadius: '4px',
-  cursor: 'pointer',
 };
 
 export default Listagem;
